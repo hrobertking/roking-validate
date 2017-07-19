@@ -1,0 +1,10 @@
+# node/npm
+node_modules
+*.log
+
+# build
+build
+lib
+
+# test
+test-results

@@ -1,0 +1,34 @@
+{
+  "name": "roking-validate",
+  "version": "0.0.2",
+  "description": "Validation module used for automatically generated forms on both back-end and front-end",
+  "author": "H Robert King <hrobertking@cathmhaol.com>",
+  "main": "src/index.js",
+  "license": "GPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hrobertking/roking-validate.git"
+  },
+  "scripts": {
+    "doc": "node bin/jsdoc.js src",
+    "init": "npm install",
+    "lint": "eslint --ignore-path .gitignore --ext js,jsx .",
+    "review": "eslint --config=.eslintrc.warn --ignore-path .gitignore --ext js,jsx .",
+    "test": "mocha",
+    "update-readme": "find src/* -follow -name README.md | xargs git add"
+  },
+  "pre-commit": [
+    "lint",
+    "test",
+    "doc",
+    "update-readme"
+  ],
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.0.0",
+    "eslint-plugin-import": "^2.3.0",
+    "jsdoc-to-markdown": "^3.0.0",
+    "mocha": "^3.4.2",
+    "pre-commit": "^1.2.2"
+  }
+}
