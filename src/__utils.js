@@ -84,7 +84,8 @@ exports.convertToNum = convertToNum;
  */
 function getParamNames(func) {
   /* get the function as a string */
-  var str = func.toString(),
+  var f = typeof func === 'function' ? func : { name: '' },
+    str = f.toString(),
     params;
 
   /**
@@ -92,7 +93,7 @@ function getParamNames(func) {
    * key stuff we know in the string
    */
   str = str.substr(0, str.indexOf('{'))
-    .replace(func.name, '')
+    .replace(f.name, '')
     .replace(/\s*function\s*/, '')
     .replace(/^\s*|\s*$/g, '')
     .replace(/\(/g, '["')
