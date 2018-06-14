@@ -328,7 +328,7 @@
           "applyDefaultPatterns": true
         }
       ],
-    "linebreak-style": [ "error",
+    "linebreak-style": [ "off",
         "unix"
       ],
     "lines-around-comment": "off",

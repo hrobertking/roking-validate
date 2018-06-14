@@ -1,7 +1,7 @@
 var utils = require('../__utils.js');
 
 /**
- * @name neq 
+ * @name neq
  * @description Returns true if the value is not equal.
  *
  * @returns {boolean}

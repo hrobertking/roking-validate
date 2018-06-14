@@ -1,7 +1,7 @@
 /**
  * Validation module
  * @author H Robert King <hrobertking@cathmhaol.com>
- * @description Validation methods 
+ * @description Validation methods
  */
 
 /**
@@ -25,6 +25,7 @@ var utils = require('./__utils.js'),
   date = require('./rules/date.js'),
   email = require('./rules/email.js'),
   iban = require('./rules/iban.js'),
+  ipaddress = require('./rules/ipaddress.js'),
   luhn = require('./rules/luhn.js'),
   max = require('./rules/max.js'),
   maxlength = require('./rules/maxlength.js'),
@@ -32,9 +33,16 @@ var utils = require('./__utils.js'),
   minlength = require('./rules/minlength.js'),
   mod7 = require('./rules/mod7.js'),
   name = require('./rules/name.js'),
+  nationalidhk = require('./rules/nationalid-hk.js'),
+  nationalidmxcurp = require('./rules/nationalid-mx-curp.js'),
+  nationalidmxtax = require('./rules/nationalid-mx-tax.js'),
+  nationalidus = require('./rules/nationalid-us.js'),
   neq = require('./rules/neq.js'),
   number = require('./rules/number.js'),
   pattern = require('./rules/pattern.js'),
+  postcodegb = require('./rules/postcode-gb.js'),
+  postcodeus = require('./rules/postcode-us.js'),
+  regionmx = require('./rules/region-mx.js'),
   required = require('./rules/required.js');
 
 // eslint-disable-next-line one-var
@@ -43,6 +51,7 @@ var validators = {
   date: date.default,
   email: email.default,
   iban: iban.default,
+  ipaddress: ipaddress.default,
   luhn: luhn.default,
   max: max.default,
   maxlength: maxlength.default,
@@ -50,9 +59,16 @@ var validators = {
   minlength: minlength.default,
   mod7: mod7.default,
   name: name.default,
+  'nationalid-hk': nationalidhk.default,
+  'nationalid-mx-curp': nationalidmxcurp.default,
+  'nationalid-mx-tax': nationalidmxtax.default,
+  'nationalid-us': nationalidus.default,
   neq: neq.default,
   number: number.default,
   pattern: pattern.default,
+  'postcode-gb': postcodegb.default,
+  'postcode-us': postcodeus.default,
+  'region-mx': regionmx.default,
   required: required.default,
 };
 exports.validators = validators;
