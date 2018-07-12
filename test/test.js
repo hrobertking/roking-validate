@@ -1,7 +1,6 @@
 /* eslint func-names: 0, prefer-arrow-callback: 0, one-var: 0 */
 var assert = require('assert'),
-  validation = require('../src/index.js'),
-  validators = validation.validators;
+  validation = require('../src/index.js');
 
 describe('Validations Module', function () {
   describe('validators - types defined in __validators', function () {
@@ -11,6 +10,7 @@ describe('Validations Module', function () {
           'date',
           'email',
           'iban',
+          'in',
           'ipaddress',
           'luhn',
           'max',
@@ -24,6 +24,7 @@ describe('Validations Module', function () {
           'nationalid-mx-tax',
           'nationalid-us',
           'neq',
+          'not-in',
           'number',
           'pattern',
           'postcode-gb',
@@ -39,7 +40,7 @@ describe('Validations Module', function () {
   });
 
   describe('validators - validate using rules array', function () {
-    it.skip('identifies passing tests', function () {
+    it('identifies passing tests', function () {
       var rules = [
           { type: 'antipattern', value: '\\s*[a-z]+' },
           { type: 'date' },
@@ -62,7 +63,7 @@ describe('Validations Module', function () {
 
       /* loop through all the results and check against the expected passing tests */
       while (ndx > -1) {
-        assert.equal(shouldPass.includes(results[ndx].type), results[ndx].valid);
+        assert.equal(shouldPass.indexOf(results[ndx].type) > -1, results[ndx].valid);
         ndx -= 1;
       }
     });
