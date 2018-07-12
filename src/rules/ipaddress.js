@@ -8,24 +8,40 @@
  */
 exports.default = function ipaddress(value, message) {
   var idx,
-    n,
     IPv4 = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/,
     IPv6 = /^[0-9a-f]{1,4}$/,
     adr = IPv4.exec(value),
     ok = true;
 
+  function isByte(a) {
+    var c,
+      n;
+
+    for (c = 0; c < a.length; c += 1) {
+      n = Number(a[c]);
+      if (Number.isNaN(n) || n < 0 || n > 255) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+  function isHex(a) {
+    var c;
+    for (c = 0; c < a.length; c += 1) {
+      if (!IPv6.test(a[c])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   if (adr) {
     if (adr.length !== 5) {
       ok = false;
     } else {
-      adr = adr.slice(1, 5);
-      for (idx = 0; idx < adr.length; idx += 1) {
-        n = Number(adr[idx]);
-        if (Number.isNaN(n) || n < 0 || n > 255) {
-          ok = false;
-          break;
-        }
-      }
+      ok = isByte(adr.slice(1, 5));
     }
   } else if (/^[:0-9a-f-]{1,4}[:-]/.test(value)) {
     ok = true;
@@ -42,12 +58,7 @@ exports.default = function ipaddress(value, message) {
     }
 
     /* next check each group to make sure it's a valid 4-digit hex value */
-    for (idx = 0; idx < adr.length; idx += 1) {
-      if (!IPv6.test(adr[idx])) {
-        ok = false;
-        break;
-      }
-    }
+    ok = isHex(adr);
   } else {
     ok = false;
   }
