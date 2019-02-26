@@ -7,7 +7,7 @@
  * @param {string} message
  */
 exports.default = function postcodegb(value, message) {
-  var pattern = /^([a-z]{1}[a-z\d]{1,3})\s(\d[a-z]{2})$/i,
+  var pattern = /^(([A-PR-UWYZ]{1,2})(?=.{1,2})(\d{1,2}[A-HK-Y]?)\s(\d)([A-BD-HJLNP-UW-Z]{2}))$/i,
     test = value,
     ok = pattern.test(test);
 
