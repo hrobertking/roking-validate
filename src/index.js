@@ -45,7 +45,8 @@ var utils = require('./__utils.js'),
   postcodegb = require('./rules/postcode-gb.js'),
   postcodeus = require('./rules/postcode-us.js'),
   regionmx = require('./rules/region-mx.js'),
-  required = require('./rules/required.js');
+  required = require('./rules/required.js'),
+  swift = require('./rules/swift.js');
 
 // eslint-disable-next-line one-var
 var validators = {
@@ -74,6 +75,7 @@ var validators = {
   'postcode-us': postcodeus.default,
   'region-mx': regionmx.default,
   required: required.default,
+  swift: swift.default,
 };
 exports.validators = validators;
 
@@ -142,4 +144,3 @@ exports.validate = function validateAll(value, rules) {
 
   return validated;
 };
-
