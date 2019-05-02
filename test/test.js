@@ -31,6 +31,7 @@ describe('Validations Module', function () {
           'postcode-us',
           'region-mx',
           'required',
+          'swift',
         ],
         types = validation.types();
 
