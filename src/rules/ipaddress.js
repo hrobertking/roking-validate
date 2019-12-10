@@ -8,7 +8,7 @@
  */
 exports.default = function ipaddress(value, message) {
   var idx,
-    IPv4 = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/,
+    IPv4 = /^(\d{1,3}\.){3}(\d{1,3})$/,
     IPv6 = /^[0-9a-f]{1,4}$/,
     adr = IPv4.exec(value),
     ok = true;
