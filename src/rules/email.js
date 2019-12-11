@@ -7,7 +7,7 @@
  * @param {string} message
  */
 exports.default = function email(value, message) {
-  var reg = new RegExp('^[\\w!#$%&"*+/=?^`{}|~.><\\x27-]+@((([a-z0-9]+-?)+\\.)+([a-z0-9]+))', 'i'),
+  var reg = /^("[\w!#$%&*+/=?^`{}|~.><\x27 -]{1,62}"|[\w!#$%&*+/=?^`{}|~.><\x27-]{1,64})@([^\W_]?[a-z\d\-]{0,63}[a-z\d]\.){0,126}([^\W_]?[a-z\d\-]{0,63}[a-z\d])$/i,
     test = value,
     ok = reg.test(test);
 
