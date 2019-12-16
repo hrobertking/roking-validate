@@ -114,24 +114,45 @@ var assert = require('assert'),
 
 describe('validators - postcodeuk', function () {
   it('identifies a valid post code - A9', function () {
-    assert.equal(true, validators['postcode-gb']('W5 4DL'));
+    var postcode = testdata.find(function (el) { return /^[A-Z]\d\s/.test(el); });
+
+    assert.equal(true, validators['postcode-gb'](postcode));
   });
   it('identifies a valid post code - A99', function () {
-    assert.equal(true, validators['postcode-gb']('G82 3ES'));
+    var postcode = testdata.find(function (el) { return /^[A-Z]\d{2}\s/.test(el); });
+
+    assert.equal(true, validators['postcode-gb'](postcode));
   });
   it('identifies a valid post code - A9A', function () {
-    assert.equal(true, validators['postcode-gb']('W1A 0AX'));
+    var postcode = testdata.find(function (el) { return /^[A-Z]\d[A-Z]\s/.test(el); });
+
+    assert.equal(true, validators['postcode-gb'](postcode));
   });
   it('identifies a valid post code - AA9', function () {
-    assert.equal(true, validators['postcode-gb']('WN2 2EB'));
+    var postcode = testdata.find(function (el) { return /^[A-Z]{2}\d\s/.test(el); });
+
+    assert.equal(true, validators['postcode-gb'](postcode));
   });
   it('identifies a valid post code - AA99', function () {
-    assert.equal(true, validators['postcode-gb']('GB82 3ES'));
+    var postcode = testdata.find(function (el) { return /^[A-Z]{2}\d{2}\s/.test(el); });
+
+    assert.equal(true, validators['postcode-gb'](postcode));
   });
   it('identifies a valid post code - AA9A', function () {
-    assert.equal(true, validators['postcode-gb']('EC1A 1BB'));
+    var postcode = testdata.find(function (el) { return /^[A-Z]{2}\d[A-Z]\s/.test(el); });
+
+    assert.equal(true, validators['postcode-gb'](postcode));
   });
   it('identifies an invalid post code - missing space', function () {
-    assert.equal(false, validators['postcode-gb']('EC1A 1BB'));
+    var postcode = testdata.find(function (el) { return /^[A-Z]\d\s/.test(el); }).replace(/\s/g, '');
+
+    assert.equal(false, validators['postcode-gb'](postcode));
+  });
+  it('identifies valid post codes by starting format', function () {
+    var f = validators['postcode-gb'];
+    
+    testdata.forEach(function (el) {
+      assert.equal(true, f(el));
+    });
   });
 });
